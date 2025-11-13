@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Home, Search, FileText, User, LogOut, Moon, Sun } from "lucide-react";
 import { useState } from "react";
+import AccessibilityToolbar from "./AccessibilityToolbar";
 
 interface UserNavbarProps {
   userName: string;
@@ -63,6 +64,8 @@ export default function UserNavbar({ userName, onLogout }: UserNavbarProps) {
           </div>
 
           <div className="flex items-center gap-2">
+            <AccessibilityToolbar />
+            
             <Button
               variant="ghost"
               size="icon"

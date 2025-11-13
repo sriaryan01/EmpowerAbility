@@ -130,7 +130,12 @@ export default function HomePage() {
                 <Card className="hover-elevate active-elevate-2 cursor-pointer" data-testid={`card-category-${category.name.toLowerCase()}`}>
                   <CardContent className="p-6 text-center">
                     <div className="mb-4 flex justify-center">
-                      <img src={category.image} alt={category.name} className="w-24 h-24 rounded-lg" />
+                      <img 
+                        src={category.image} 
+                        alt={`${category.name} scheme category icon`}
+                        className="w-24 h-24 rounded-lg"
+                        role="img"
+                      />
                     </div>
                     <h3 className="text-xl font-semibold mb-2 flex items-center justify-center gap-2">
                       <Icon className="h-5 w-5" />

@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Eye, EyeOff } from "lucide-react";
+import SpeechToTextButton from "./SpeechToTextButton";
 
 interface AuthPageProps {
   onLogin: (username: string, role: "user" | "admin") => void;
@@ -60,16 +61,24 @@ export default function AuthPage({ onLogin }: AuthPageProps) {
                 <form onSubmit={handleLogin} className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="login-username">Username or Email</Label>
-                    <Input
-                      id="login-username"
-                      type="text"
-                      placeholder="Enter your username"
-                      value={loginData.username}
-                      onChange={(e) => setLoginData({ ...loginData, username: e.target.value })}
-                      required
-                      data-testid="input-login-username"
-                      aria-label="Username or Email"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="login-username"
+                        type="text"
+                        placeholder="Enter your username"
+                        value={loginData.username}
+                        onChange={(e) => setLoginData({ ...loginData, username: e.target.value })}
+                        required
+                        data-testid="input-login-username"
+                        aria-label="Username or Email"
+                      />
+                      <div className="absolute right-0 top-0">
+                        <SpeechToTextButton
+                          onTranscript={(text) => setLoginData({ ...loginData, username: text })}
+                          label="Voice input for username"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
@@ -117,57 +126,89 @@ export default function AuthPage({ onLogin }: AuthPageProps) {
                 <form onSubmit={handleRegister} className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="register-name">Full Name</Label>
-                    <Input
-                      id="register-name"
-                      type="text"
-                      placeholder="Enter your full name"
-                      value={registerData.fullName}
-                      onChange={(e) => setRegisterData({ ...registerData, fullName: e.target.value })}
-                      required
-                      data-testid="input-register-name"
-                      aria-label="Full Name"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="register-name"
+                        type="text"
+                        placeholder="Enter your full name"
+                        value={registerData.fullName}
+                        onChange={(e) => setRegisterData({ ...registerData, fullName: e.target.value })}
+                        required
+                        data-testid="input-register-name"
+                        aria-label="Full Name"
+                      />
+                      <div className="absolute right-0 top-0">
+                        <SpeechToTextButton
+                          onTranscript={(text) => setRegisterData({ ...registerData, fullName: text })}
+                          label="Voice input for full name"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="register-email">Email</Label>
-                    <Input
-                      id="register-email"
-                      type="email"
-                      placeholder="Enter your email"
-                      value={registerData.email}
-                      onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })}
-                      required
-                      data-testid="input-register-email"
-                      aria-label="Email"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="register-email"
+                        type="email"
+                        placeholder="Enter your email"
+                        value={registerData.email}
+                        onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })}
+                        required
+                        data-testid="input-register-email"
+                        aria-label="Email"
+                      />
+                      <div className="absolute right-0 top-0">
+                        <SpeechToTextButton
+                          onTranscript={(text) => setRegisterData({ ...registerData, email: text })}
+                          label="Voice input for email"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="register-phone">Phone Number</Label>
-                    <Input
-                      id="register-phone"
-                      type="tel"
-                      placeholder="Enter your phone number"
-                      value={registerData.phone}
-                      onChange={(e) => setRegisterData({ ...registerData, phone: e.target.value })}
-                      required
-                      data-testid="input-register-phone"
-                      aria-label="Phone Number"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="register-phone"
+                        type="tel"
+                        placeholder="Enter your phone number"
+                        value={registerData.phone}
+                        onChange={(e) => setRegisterData({ ...registerData, phone: e.target.value })}
+                        required
+                        data-testid="input-register-phone"
+                        aria-label="Phone Number"
+                      />
+                      <div className="absolute right-0 top-0">
+                        <SpeechToTextButton
+                          onTranscript={(text) => setRegisterData({ ...registerData, phone: text })}
+                          label="Voice input for phone number"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="register-disability">Disability Type</Label>
-                    <Input
-                      id="register-disability"
-                      type="text"
-                      placeholder="e.g., Visual, Hearing, Mobility"
-                      value={registerData.disabilityType}
-                      onChange={(e) => setRegisterData({ ...registerData, disabilityType: e.target.value })}
-                      data-testid="input-register-disability"
-                      aria-label="Disability Type"
-                    />
+                    <div className="relative">
+                      <Input
+                        id="register-disability"
+                        type="text"
+                        placeholder="e.g., Visual, Hearing, Mobility"
+                        value={registerData.disabilityType}
+                        onChange={(e) => setRegisterData({ ...registerData, disabilityType: e.target.value })}
+                        data-testid="input-register-disability"
+                        aria-label="Disability Type"
+                      />
+                      <div className="absolute right-0 top-0">
+                        <SpeechToTextButton
+                          onTranscript={(text) => setRegisterData({ ...registerData, disabilityType: text })}
+                          label="Voice input for disability type"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
