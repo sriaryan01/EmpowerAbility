@@ -11,6 +11,7 @@ import AuthPage from "@/components/AuthPage";
 import UserNavbar from "@/components/UserNavbar";
 import HomePage from "@/components/HomePage";
 import BrowseSchemes from "@/components/BrowseSchemes";
+import SchemeDetail from "@/components/SchemeDetail";
 import UserDashboard from "@/components/UserDashboard";
 import AdminSidebar from "@/components/AdminSidebar";
 import AdminDashboard from "@/components/AdminDashboard";
@@ -29,6 +30,7 @@ function UserRouter({ userName, onLogout }: { userName: string; onLogout: () => 
         <Switch>
           <Route path="/" component={HomePage} />
           <Route path="/browse" component={BrowseSchemes} />
+          <Route path="/scheme/:id" component={SchemeDetail} />
           <Route path="/dashboard" component={UserDashboard} />
           <Route component={NotFound} />
         </Switch>
